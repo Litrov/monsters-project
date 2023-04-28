@@ -1,17 +1,19 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import './search-box.styles.css';
 
-const SearchBox = (props) => {
-    return (
-        <div>
-            <input
-                className="search-box"
-                type="search"
-                placeholder="search monsters"
-                onChange={props.onSearch}
-            />
-        </div>
-    )
+interface ISearchBoxProps {
+    className: string;
+    placeholder?: string;
+    onChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void;
 }
+
+const SearchBox = ({className, placeholder, onChangeHandler}: ISearchBoxProps) => (
+    <input
+        className={`search-box ${className}`}
+        type='search'
+        placeholder={placeholder}
+        onChange={onChangeHandler}
+    />
+);
 
 export default SearchBox;
